@@ -59,6 +59,7 @@ public class PuntoVentaServiceImpl implements IPunto1Service {
 
     private PuntoVenta convertToEntity(PuntoVentaDTO PuntoVentaDTO) {
         PuntoVenta product = new PuntoVenta();
+        product.setId(PuntoVentaDTO.getId());
         product.setNombre(PuntoVentaDTO.getNombre());
         return product;
     }

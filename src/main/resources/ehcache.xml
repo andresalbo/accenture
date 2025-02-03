@@ -8,7 +8,7 @@
 <!-- 		<key-type>java.lang.Long</key-type> -->
 <!-- 		<value-type>com.accenture.demo.model.PuntoVenta</value-type> -->
 		<expiry>
-			<ttl unit="seconds">30</ttl>
+			<ttl unit="seconds">60</ttl>
 		</expiry>
 
 		<listeners>
