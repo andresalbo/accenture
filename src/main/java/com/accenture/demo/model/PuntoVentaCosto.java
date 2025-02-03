@@ -1,8 +1,13 @@
 package com.accenture.demo.model;
 
+import java.io.Serializable;
 
-public class PuntoVentaCosto {
+public class PuntoVentaCosto implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4641990928092543806L;
 	private PuntoVenta puntoVenta;
 	private Costo costo;
 
