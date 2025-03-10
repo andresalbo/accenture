@@ -23,7 +23,7 @@ import com.accenture.demo.repository.CostoRepository;
 import com.accenture.demo.repository.PuntoVentaRepository;
 
 @Service
-public class CostoServiceImpl implements IPunto2Service {
+public class CostoServiceImpl implements ICostoService {
 
 	private final CostoRepository costoRepository;
 	private final PuntoVentaRepository puntoVentaRepository;
@@ -37,22 +37,11 @@ public class CostoServiceImpl implements IPunto2Service {
 		return new CostoDTO(costo.getIdCosto().getIdA(), costo.getIdCosto().getIdB(), costo.getCosto());
 	}
 
-	private PuntoVentaDTO convertToDTOPuntoVenta(PuntoVenta pv) {
-		return new PuntoVentaDTO(pv.getId(), pv.getNombre());
-	}
-
 	private Costo convertToEntity(CostoDTO costoDTO) {
 		Costo costo = new Costo();
 		costo.setIdCosto(new IdCosto(costoDTO.idA(), costoDTO.idB()));
 		costo.setCosto(costoDTO.costo());
 		return costo;
-	}
-
-	@Override
-	public CostoDTO saveCosto(CostoDTO costoDTO) {
-		Costo costo = convertToEntity(costoDTO);
-		Costo savedCosto = costoRepository.save(costo);
-		return convertToDTO(savedCosto);
 	}
 
 	@Override
@@ -109,5 +98,12 @@ public class CostoServiceImpl implements IPunto2Service {
 		double costoTotal = path.getWeight();
 		CaminoDTO output = new CaminoDTO((long)costoTotal, camino);
 		return output;
+	}
+
+	@Override
+	public CostoDTO saveCosto(CostoDTO costoDTO) {
+		Costo costo = convertToEntity(costoDTO);
+		Costo savedCosto = costoRepository.save(costo);
+		return convertToDTO(savedCosto);
 	}
 }

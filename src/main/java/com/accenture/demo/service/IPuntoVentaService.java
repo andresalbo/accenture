@@ -7,7 +7,7 @@ import org.springframework.cache.annotation.Cacheable;
 
 import com.accenture.demo.model.PuntoVentaDTO;
 
-public interface IPunto1Service {
+public interface IPuntoVentaService {
 
 	@Cacheable(value = "elCache")
 	List<PuntoVentaDTO> getAllPuntoVenta();

@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import com.accenture.demo.model.Acreditacion;
 
-public interface IPunto3Service {
+public interface IAcreditacionesService {
 
 	Acreditacion guardarAcreditacion(double importe, long idPuntoVenta, LocalDateTime now, String nombrePuntoVenta);
 

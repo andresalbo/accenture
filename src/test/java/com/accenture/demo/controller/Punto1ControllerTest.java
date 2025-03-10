@@ -22,10 +22,10 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.accenture.demo.model.PuntoVentaDTO;
-import com.accenture.demo.service.IPunto1Service;
+import com.accenture.demo.service.IPuntoVentaService;
 
 @ExtendWith({SpringExtension.class, MockitoExtension.class})
-@WebMvcTest(Punto1Controller.class)
+@WebMvcTest(PuntoVentaController.class)
 //@SpringBootTest(properties = "spring.main.allow-bean-definition-overriding=true")
 public class Punto1ControllerTest {
 
@@ -37,7 +37,7 @@ public class Punto1ControllerTest {
     private MockMvc mockMvc;
 
     @MockitoBean
-    private IPunto1Service service1;
+    private IPuntoVentaService service1;
     
 //    @TestConfiguration
 //    static class TestConfig {

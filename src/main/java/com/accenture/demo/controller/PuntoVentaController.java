@@ -12,49 +12,51 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.accenture.demo.model.PuntoVentaDTO;
-import com.accenture.demo.service.IPunto1Service;
+import com.accenture.demo.service.IPuntoVentaService;
 
-@org.springframework.web.bind.annotation.RestController
-@RequestMapping(path = "/punto1")
-public class Punto1Controller {
+@RestController
+@RequestMapping(path = "/punto-venta")
+public class PuntoVentaController {
 	
 	
 	@Autowired
-	private IPunto1Service service1;
+	private IPuntoVentaService puntoVentaService;
 	
 
-    @GetMapping
-    public List<PuntoVentaDTO> getAllPuntoVenta() {
-        return service1.getAllPuntoVenta();
+    @PostMapping(value = "/create")
+    public ResponseEntity<PuntoVentaDTO> createPuntoVenta(@RequestBody PuntoVentaDTO productDTO) {
+        PuntoVentaDTO pv =  puntoVentaService.savePuntoVenta(productDTO);
+        return ResponseEntity.ok(pv);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePuntoVenta(@PathVariable Long id) {
+    	puntoVentaService.deletePuntoVenta(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/readAll")
+    public ResponseEntity<List<PuntoVentaDTO>> getAllPuntoVenta() {
+        return ResponseEntity.ok(puntoVentaService.getAllPuntoVenta());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<PuntoVentaDTO> getPuntoVentaById(@PathVariable Long id) {
-        Optional<PuntoVentaDTO> pv = service1.getPuntoVentaById(id);
+        Optional<PuntoVentaDTO> pv = puntoVentaService.getPuntoVentaById(id);
         return pv.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @PostMapping
-    public PuntoVentaDTO createPuntoVenta(@RequestBody PuntoVentaDTO productDTO) {
-        return service1.savePuntoVenta(productDTO);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<PuntoVentaDTO> updatePuntoVenta(@PathVariable Long id, @RequestBody PuntoVentaDTO pvDTO) {
         try {
-        	PuntoVentaDTO updatePuntoVenta = service1.updatePuntoVenta(id, pvDTO);
+        	PuntoVentaDTO updatePuntoVenta = puntoVentaService.updatePuntoVenta(id, pvDTO);
             return ResponseEntity.ok(updatePuntoVenta);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePuntoVenta(@PathVariable Long id) {
-    	service1.deletePuntoVenta(id);
-        return ResponseEntity.noContent().build();
     }
 
 }

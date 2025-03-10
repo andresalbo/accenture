@@ -9,7 +9,7 @@ import com.accenture.demo.model.PuntoVentaCosto;
 import com.accenture.demo.model.PuntoVentaCostoDTO;
 import com.accenture.demo.model.PuntoVentaDTO;
 
-public interface IPunto2Service {
+public interface ICostoService {
 	
 	CostoDTO saveCosto(CostoDTO costoDTO);
 	

@@ -11,7 +11,7 @@ import com.accenture.demo.model.PuntoVenta;
 import com.accenture.demo.model.PuntoVentaDTO;
 import com.accenture.demo.repository.PuntoVentaRepository;
 @Service
-public class PuntoVentaServiceImpl implements IPunto1Service {
+public class PuntoVentaServiceImpl implements IPuntoVentaService {
 	
 	private final PuntoVentaRepository puntoVentaRepository;
 

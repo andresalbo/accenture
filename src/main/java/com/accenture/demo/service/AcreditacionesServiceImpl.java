@@ -9,7 +9,7 @@ import com.accenture.demo.model.Acreditacion;
 import com.accenture.demo.repository.AcreditacionRepository;
 
 @Service
-public class AcreditacionesServiceImpl implements IPunto3Service {
+public class AcreditacionesServiceImpl implements IAcreditacionesService {
 
 	@Autowired
 	private AcreditacionRepository acreditacionRepository;
